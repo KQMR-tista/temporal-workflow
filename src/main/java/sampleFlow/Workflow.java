@@ -18,17 +18,20 @@ public class Workflow implements WorkflowImplementation {
     public void initiateExampleWorkflowMethod() {
         List<Promise<String>> promiseList = new ArrayList<>();
 
+        /* Sequential */
         String activityOne = Async.function(activity::performActivityOne).get();
         io.temporal.workflow.Workflow.sleep(Duration.ofSeconds(30));
         String activityTwo = Async.function(activity::performActivityTwo).get();
         io.temporal.workflow.Workflow.sleep(Duration.ofSeconds(30));
 
+        /* Parallel */
         promiseList.add(Async.function(activity::performActivityThree));
         promiseList.add(Async.function(activity::performActivityFour));
         io.temporal.workflow.Workflow.sleep(Duration.ofSeconds(30));
 
         List<String> parallelActivitylist = promiseList.stream().map(Promise::get).toList();
 
+        /* Sequential */
         String activityFive = Async.function(activity::performActivityFive).get();
         io.temporal.workflow.Workflow.sleep(Duration.ofSeconds(30));
     }
