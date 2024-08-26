@@ -1,4 +1,6 @@
-package sampleFlow;
+package sampleFlow.implementations;
+
+import sampleFlow.interfaces.Activity;
 
 public class ActivityImplementation implements Activity {
     @Override

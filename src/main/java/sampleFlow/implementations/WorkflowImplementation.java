@@ -1,14 +1,16 @@
-package sampleFlow;
+package sampleFlow.implementations;
 
 import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Async;
 import io.temporal.workflow.Promise;
+import sampleFlow.interfaces.Activity;
+import sampleFlow.interfaces.Workflow;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workflow implements WorkflowImplementation {
+public class WorkflowImplementation implements Workflow {
 
     private final Activity activity =
             io.temporal.workflow.Workflow.newActivityStub(Activity.class,

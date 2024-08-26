@@ -1,4 +1,4 @@
-package sampleFlow;
+package sampleFlow.interfaces;
 
 import io.temporal.activity.ActivityInterface;
 
